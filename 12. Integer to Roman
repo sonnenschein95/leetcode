@@ -1,0 +1,83 @@
+class Solution {
+public:
+    string intToRoman(int num) {
+        int remain;
+        int i = 0;
+        string result;
+        while(num != 0){
+            remain = num % 10;
+            num = num / 10;
+            if(i == 0){
+                if(remain >= 1 && remain <= 3){
+                    while(remain > 0){
+                        result = "I" + result;
+                        remain--;
+                    }
+                }
+                else if(remain == 4){
+                    result = "IV" + result;
+                }
+                else if(remain == 9){
+                    result = "IX" + result;
+                }
+                else if(remain>=5 && remain <= 8){
+                    while((remain - 5) > 0){
+                        result = "I" + result;
+                        remain--;
+                    }
+                    result = "V" + result;
+                }
+            }
+            else if(i == 1){
+                if(remain>=1&&remain<=3){
+                    while(remain > 0){
+                        result = "X" + result;
+                        remain--;
+                    }
+                }
+                else if(remain == 4){
+                    result = "XL" + result;
+                }
+                else if(remain == 9){
+                    result = "XC" + result;
+                }
+                else  if(remain>=5 && remain <= 8){
+                    while((remain - 5) > 0){
+                        result = "X" + result;
+                        remain--;
+                    }
+                    result = "L" + result;
+                }
+            }
+            else if(i == 2){
+                if(remain>=1&&remain<=3){
+                    while(remain > 0){
+                        result = "C" + result;
+                        remain--;
+                    }
+                }
+                else if(remain == 4){
+                    result = "CD" + result;
+                }
+                else if(remain == 9){
+                    result = "CM" + result;
+                }
+                else  if(remain>=5 && remain <= 8){
+                    while((remain - 5) > 0){
+                        result = "C" + result;
+                        remain--;
+                    }
+                    result = "D" + result;
+                }
+            }
+            else{
+                while(remain > 0){
+                    result = "M" + result;
+                    remain--;
+                }
+            }
+            i++;
+        }
+        return result;
+    }
+};
